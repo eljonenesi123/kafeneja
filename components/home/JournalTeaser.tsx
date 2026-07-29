@@ -1,0 +1,57 @@
+import Link from "next/link";
+import Photo from "../Photo";
+import Reveal from "../Reveal";
+import SectionHeading from "../SectionHeading";
+import { posts } from "@/lib/posts";
+
+export default function JournalTeaser() {
+  const latest = posts.slice(0, 3);
+  return (
+    <section className="bg-cream-warm py-20 sm:py-28">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-12">
+          <SectionHeading eyebrow="From the Journal" title="Notes & news." />
+          <Reveal delay={0.1}>
+            <Link
+              href="/journal"
+              className="link-underline text-sm tracking-wide text-espresso whitespace-nowrap"
+            >
+              All posts →
+            </Link>
+          </Reveal>
+        </div>
+
+        <Reveal
+          childSelector="[data-post]"
+          stagger={0.08}
+          className="grid md:grid-cols-3 gap-8"
+        >
+          {latest.map((post) => (
+            <Link
+              href={`/journal/${post.slug}`}
+              key={post.slug}
+              data-post
+              className="group block"
+            >
+              <Photo
+                variant={post.photo}
+                ratio="aspect-[4/3]"
+                className="rounded-xl mb-5 transition-transform duration-500 group-hover:scale-[1.02]"
+                label={post.title}
+              />
+              <p className="text-xs uppercase tracking-widest text-clay mb-2">
+                {post.category}
+              </p>
+              <h3 className="font-display text-xl text-espresso leading-snug group-hover:text-caramel transition-colors">
+                {post.title}
+              </h3>
+              <p className="text-sm text-ink-soft mt-2 leading-relaxed">
+                {post.excerpt}
+              </p>
+            </Link>
+          ))}
+        </Reveal>
+      </div>
+    </section>
+  );
+}

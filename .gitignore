@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# claude code local skill data
+.claude/
+
+# raw unprocessed media (compressed versions live in public/videos)
+assets/source/
