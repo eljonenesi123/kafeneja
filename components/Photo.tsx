@@ -10,12 +10,12 @@ if (typeof window !== "undefined") {
 }
 
 const VARIANTS: Record<string, string> = {
-  espresso: "from-[#4a2c17] via-[#7a4726] to-[#c8912a]",
-  beans: "from-[#241309] via-[#4a2c17] to-[#8a5a2e]",
-  latte: "from-[#8a5a2e] via-[#c8912a] to-[#f5e9d6]",
-  interior: "from-[#3a2317] via-[#6b4226] to-[#b45309]",
-  pastry: "from-[#5c3a21] via-[#92400e] to-[#e7b675]",
-  pour: "from-[#241309] via-[#5c3a21] to-[#c8912a]",
+  espresso: "from-[#3a2110] via-[#8a3f10] to-[#d4881f]",
+  beans: "from-[#180c07] via-[#3a2110] to-[#a3410a]",
+  latte: "from-[#8a5a2e] via-[#d4881f] to-[#f5e9d6]",
+  interior: "from-[#2c1710] via-[#6b3a1c] to-[#c2410c]",
+  pastry: "from-[#6b3a1c] via-[#a3410a] to-[#e7b675]",
+  pour: "from-[#180c07] via-[#6b3a1c] to-[#d4881f]",
 };
 
 export default function Photo({
