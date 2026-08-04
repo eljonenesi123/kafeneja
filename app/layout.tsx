@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
+import LoadingSplash from "@/components/LoadingSplash";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -21,13 +22,13 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://kafeneja-tirana.al"),
   title: {
-    default: "Kafeneja — Specialty Coffee in Tirana",
-    template: "%s — Kafeneja",
+    default: "Kafeneja | Specialty Coffee in Tirana",
+    template: "%s | Kafeneja",
   },
   description:
     "A slow-roasted corner of Blloku. Kafeneja is a specialty coffee house in Tirana, Albania, serving single-origin espresso, house pastries, and honest hospitality.",
   openGraph: {
-    title: "Kafeneja — Specialty Coffee in Tirana",
+    title: "Kafeneja | Specialty Coffee in Tirana",
     description:
       "A slow-roasted corner of Blloku. Single-origin espresso, house pastries, honest hospitality.",
     url: "https://kafeneja-tirana.al",
@@ -54,6 +55,7 @@ export default function RootLayout({
         >
           Skip to content
         </a>
+        <LoadingSplash />
         <Header />
         <main id="main" className="flex-1">
           <PageTransition>{children}</PageTransition>

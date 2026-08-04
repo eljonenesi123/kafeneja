@@ -68,7 +68,7 @@ export default function Hero() {
             data-hero-eyebrow
             className="text-xs sm:text-sm tracking-[0.25em] uppercase text-clay mb-6"
           >
-            Blloku, Tirana — Est. 2019
+            Blloku, Tirana · Est. 2019
           </p>
           <h1 className="font-display text-[13vw] leading-[0.95] sm:text-6xl md:text-7xl lg:text-6xl xl:text-7xl text-espresso text-balance">
             <span data-hero-line className="block overflow-hidden">
@@ -83,7 +83,7 @@ export default function Hero() {
             className="mt-6 max-w-md text-base sm:text-lg text-ink-soft leading-relaxed"
           >
             Single-origin beans, roasted in small batches and pulled with
-            care — in the heart of Tirana&apos;s Blloku district.
+            care, in the heart of Tirana&apos;s Blloku district.
           </p>
           <div className="mt-9 flex flex-wrap items-center gap-4">
             <Link

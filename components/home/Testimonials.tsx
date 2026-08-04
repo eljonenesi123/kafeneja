@@ -4,7 +4,7 @@ import SectionHeading from "../SectionHeading";
 const REVIEWS = [
   {
     quote:
-      "The flat white here rivals anything I had in Melbourne. Blloku's best-kept secret — except everyone already knows.",
+      "The flat white here rivals anything I had in Melbourne. Supposedly Blloku's best-kept secret, except everyone already knows.",
     name: "Elira K.",
     context: "Google Review",
   },

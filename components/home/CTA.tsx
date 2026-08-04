@@ -9,7 +9,7 @@ export default function CTA() {
           className="rounded-3xl bg-gradient-to-br from-clay to-espresso text-cream px-8 py-16 sm:py-20 text-center grain"
         >
           <h2 className="font-display text-3xl sm:text-5xl text-balance max-w-2xl mx-auto">
-            Come sit with us — the coffee&apos;s ready.
+            Come sit with us. The coffee&apos;s ready.
           </h2>
           <p className="mt-4 text-cream/75 max-w-md mx-auto">
             Rruga Ismail Qemali 12, Blloku, Tirana. Open daily from 07:30.

@@ -44,7 +44,7 @@ export default function ContactForm() {
         className="rounded-2xl border border-clay/30 bg-clay/5 p-8 text-center"
       >
         <p className="font-display text-2xl text-espresso mb-2">
-          Faleminderit — message sent!
+          Faleminderit, message sent!
         </p>
         <p className="text-ink-soft text-sm">
           We usually reply within one business day. For same-day questions,

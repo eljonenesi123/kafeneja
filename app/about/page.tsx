@@ -6,7 +6,7 @@ import CTA from "@/components/home/CTA";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "The story of Kafeneja — a specialty coffee house in Blloku, Tirana, roasting small batches since 2019.",
+    "The story of Kafeneja, a specialty coffee house in Blloku, Tirana, roasting small batches since 2019.",
 };
 
 const VALUES = [
@@ -20,7 +20,7 @@ const VALUES = [
   },
   {
     title: "Tradition, Kept",
-    text: "Kafe turke is treated with the same care as our espresso — no shortcuts.",
+    text: "Kafe turke is treated with the same care as our espresso, no shortcuts taken.",
   },
 ];
 
@@ -62,8 +62,8 @@ export default function AboutPage() {
             built the bar themselves.
           </p>
           <p>
-            The name — Kafeneja, an old Albanian word for a neighborhood
-            coffee house — was a deliberate choice. We wanted a space that
+            The name Kafeneja, an old Albanian word for a neighborhood
+            coffee house, was a deliberate choice. We wanted a space that
             felt like it had always been there, even on day one.
           </p>
           <p>
