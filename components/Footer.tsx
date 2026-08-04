@@ -1,5 +1,6 @@
 import Link from "next/link";
 import NewsletterSignup from "./NewsletterSignup";
+import { InstagramDoodle, FacebookDoodle } from "./icons/DoodleIcons";
 
 export default function Footer() {
   return (
@@ -14,19 +15,21 @@ export default function Footer() {
             A slow-roasted corner of Blloku, pouring single-origin espresso,
             house pastries, and honest hospitality since 2019.
           </p>
-          <div className="flex gap-4 mt-6">
+          <div className="flex gap-5 mt-6">
             {[
-              { label: "Instagram", href: "https://instagram.com" },
-              { label: "Facebook", href: "https://facebook.com" },
+              { label: "Instagram", href: "https://instagram.com", Icon: InstagramDoodle },
+              { label: "Facebook", href: "https://facebook.com", Icon: FacebookDoodle },
             ].map((s) => (
               <a
                 key={s.label}
                 href={s.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xs uppercase tracking-widest link-underline text-cream/70 hover:text-cream"
+                aria-label={s.label}
+                className="group flex items-center gap-2 text-xs uppercase tracking-widest text-cream/70 hover:text-cream transition-colors"
               >
-                {s.label}
+                <s.Icon className="w-5 h-5 shrink-0 transition-transform duration-200 group-hover:-translate-y-0.5" />
+                <span className="link-underline">{s.label}</span>
               </a>
             ))}
           </div>
