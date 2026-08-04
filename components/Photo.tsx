@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -24,6 +25,8 @@ export default function Photo({
   label,
   parallax = false,
   tilt = false,
+  src,
+  objectPosition = "center",
 }: {
   variant?: keyof typeof VARIANTS;
   className?: string;
@@ -31,6 +34,8 @@ export default function Photo({
   label?: string;
   parallax?: boolean;
   tilt?: boolean;
+  src?: string;
+  objectPosition?: string;
 }) {
   const wrapRef = useRef<HTMLDivElement | null>(null);
   const layerRef = useRef<HTMLDivElement | null>(null);
@@ -107,29 +112,47 @@ export default function Photo({
       role="img"
       aria-label={label ?? "Kafeneja photograph"}
     >
-      <div
-        ref={layerRef}
-        className={`absolute inset-0 bg-gradient-to-br ${VARIANTS[variant]} ${
-          parallax ? "-top-[10%] -bottom-[10%] h-[120%]" : ""
-        }`}
-      />
-      <svg
-        className="absolute inset-0 h-full w-full opacity-[0.08] mix-blend-overlay"
-        preserveAspectRatio="none"
-        viewBox="0 0 100 100"
-      >
-        <defs>
-          <pattern
-            id={`grid-${variant}`}
-            width="10"
-            height="10"
-            patternUnits="userSpaceOnUse"
+      {src ? (
+        <div
+          ref={layerRef}
+          className={parallax ? "absolute -top-[10%] -bottom-[10%] h-[120%] w-full" : "absolute inset-0"}
+        >
+          <Image
+            src={src}
+            alt={label ?? "Kafeneja photograph"}
+            fill
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            style={{ objectFit: "cover", objectPosition }}
+            priority={false}
+          />
+        </div>
+      ) : (
+        <>
+          <div
+            ref={layerRef}
+            className={`absolute inset-0 bg-gradient-to-br ${VARIANTS[variant]} ${
+              parallax ? "-top-[10%] -bottom-[10%] h-[120%]" : ""
+            }`}
+          />
+          <svg
+            className="absolute inset-0 h-full w-full opacity-[0.08] mix-blend-overlay"
+            preserveAspectRatio="none"
+            viewBox="0 0 100 100"
           >
-            <path d="M 10 0 L 0 0 0 10" fill="none" stroke="white" strokeWidth="0.5" />
-          </pattern>
-        </defs>
-        <rect width="100" height="100" fill={`url(#grid-${variant})`} />
-      </svg>
+            <defs>
+              <pattern
+                id={`grid-${variant}`}
+                width="10"
+                height="10"
+                patternUnits="userSpaceOnUse"
+              >
+                <path d="M 10 0 L 0 0 0 10" fill="none" stroke="white" strokeWidth="0.5" />
+              </pattern>
+            </defs>
+            <rect width="100" height="100" fill={`url(#grid-${variant})`} />
+          </svg>
+        </>
+      )}
     </div>
   );
 }

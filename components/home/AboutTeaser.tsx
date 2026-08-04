@@ -8,10 +8,11 @@ export default function AboutTeaser() {
       <div className="mx-auto max-w-7xl px-5 sm:px-8 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         <Reveal>
           <Photo
-            variant="interior"
-            ratio="aspect-[5/4]"
+            src="/kafeneja/images/barista-pour.jpg"
+            objectPosition="center"
+            ratio="aspect-[4/3]"
             className="rounded-2xl"
-            label="Interior of Kafeneja, Blloku"
+            label="Pulling a shot behind the bar at Kafeneja"
             parallax
           />
         </Reveal>
@@ -25,14 +26,14 @@ export default function AboutTeaser() {
           </h2>
           <p className="text-ink-soft leading-relaxed mb-4">
             Kafeneja opened its doors in 2019 in a converted apartment on
-            Rruga Ismail Qemali — the kind of Blloku building that still
+            Rruga Ismail Qemali, the kind of Blloku building that still
             has its original tile floors. We roast in small batches, source
             directly where we can, and treat kafe turke with the same
             respect as a dialed-in V60.
           </p>
           <p className="text-ink-soft leading-relaxed mb-8">
             Today we're a small team of baristas, bakers, and one very
-            particular roaster — still pouring the same espresso we'd want
+            particular roaster, still pouring the same espresso we'd want
             to drink ourselves.
           </p>
           <Link

@@ -9,8 +9,8 @@ export const metadata: Metadata = {
 };
 
 const HOURS = [
-  { day: "Monday – Friday", time: "07:30 – 20:00" },
-  { day: "Saturday – Sunday", time: "08:00 – 21:00" },
+  { day: "Monday to Friday", time: "07:30 to 20:00" },
+  { day: "Saturday to Sunday", time: "08:00 to 21:00" },
 ];
 
 export default function ContactPage() {
@@ -86,7 +86,7 @@ export default function ContactPage() {
             </h2>
             <p className="text-ink-soft leading-relaxed">
               We hold tables for groups of 4 or more. For same-day
-              reservations, calling ahead is fastest — otherwise use the
+              reservations, calling ahead is fastest. Otherwise use the
               form and mention your preferred time.
             </p>
           </div>
