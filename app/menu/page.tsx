@@ -17,9 +17,9 @@ export default function MenuPage() {
         <Reveal className="order-2 lg:order-1">
           <Photo
             src="/kafeneja/images/espresso-cup.jpg"
-            objectPosition="center 35%"
-            ratio="aspect-[4/5]"
-            className="rounded-2xl max-w-xs mx-auto lg:mx-0"
+            objectPosition="center"
+            ratio="aspect-[4/3]"
+            className="rounded-2xl max-w-sm mx-auto lg:mx-0"
             label="Espresso, house cup and saucer"
           />
         </Reveal>
