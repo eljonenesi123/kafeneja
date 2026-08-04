@@ -30,7 +30,7 @@ const shots: {
   },
   {
     src: "/kafeneja/images/espresso-cup.jpg",
-    objectPosition: "center 30%",
+    objectPosition: "center",
     label: "Double espresso, house cup",
   },
   {
