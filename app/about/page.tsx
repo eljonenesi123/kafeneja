@@ -25,9 +25,21 @@ const VALUES = [
 ];
 
 const TEAM = [
-  { name: "Griselda Hoxha", role: "Founder & Roaster" },
-  { name: "Ard Berisha", role: "Head Barista" },
-  { name: "Elsa Krasniqi", role: "Pastry Lead" },
+  {
+    name: "Griselda Hoxha",
+    role: "Founder & Roaster",
+    src: "/kafeneja/images/staff-griselda.jpg",
+  },
+  {
+    name: "Ard Berisha",
+    role: "Head Barista",
+    src: "/kafeneja/images/staff-ard.jpg",
+  },
+  {
+    name: "Redi Krasniqi",
+    role: "Bar Lead",
+    src: "/kafeneja/images/staff-redi.jpg",
+  },
 ];
 
 export default function AboutPage() {
@@ -47,10 +59,10 @@ export default function AboutPage() {
       <section className="mx-auto max-w-7xl px-5 sm:px-8 pb-20 sm:pb-28 grid lg:grid-cols-2 gap-12 items-center">
         <Reveal>
           <Photo
-            variant="beans"
+            src="/kafeneja/images/coffee-on-table.jpg"
             ratio="aspect-[5/4]"
             className="rounded-2xl"
-            label="Roasting beans at Kafeneja"
+            label="Moccacino and cappuccino at the table"
           />
         </Reveal>
         <Reveal delay={0.1} className="space-y-4 text-ink-soft leading-relaxed">
@@ -127,7 +139,7 @@ export default function AboutPage() {
             {TEAM.map((t) => (
               <div key={t.name} data-person className="text-center">
                 <Photo
-                  variant="latte"
+                  src={t.src}
                   ratio="aspect-square"
                   className="rounded-full mx-auto mb-5 max-w-[180px]"
                   label={t.name}
