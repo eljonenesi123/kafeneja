@@ -136,6 +136,14 @@ export function InstagramDoodle({ className = "" }: IconProps) {
   );
 }
 
+export function StarIcon({ className = "" }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+      <path d="M12 2.5c.3 0 .6.2.7.5l2.4 5.1 5.5.7c.7.1 1 1 .5 1.5l-4 3.9 1 5.5c.1.6-.5 1.1-1.1.8L12 17.6l-4.9 2.6c-.6.3-1.2-.2-1.1-.8l1-5.5-4-3.9c-.5-.5-.2-1.4.5-1.5l5.5-.7 2.4-5.1c.1-.3.4-.5.7-.5z" />
+    </svg>
+  );
+}
+
 export function FacebookDoodle({ className = "" }: IconProps) {
   return (
     <svg viewBox="0 0 40 40" fill="none" className={className} aria-hidden="true">

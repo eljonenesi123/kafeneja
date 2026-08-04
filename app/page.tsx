@@ -1,5 +1,6 @@
 import Hero from "@/components/Hero";
 import MarqueeStrip from "@/components/MarqueeStrip";
+import SectionDivider from "@/components/SectionDivider";
 import FeaturedMenu from "@/components/home/FeaturedMenu";
 import AboutTeaser from "@/components/home/AboutTeaser";
 import Gallery from "@/components/home/Gallery";
@@ -11,11 +12,13 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <Testimonials />
       <MarqueeStrip />
       <FeaturedMenu />
+      <SectionDivider />
       <AboutTeaser />
       <Gallery />
-      <Testimonials />
+      <SectionDivider />
       <JournalTeaser />
       <CTA />
     </>

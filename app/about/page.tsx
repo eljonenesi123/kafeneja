@@ -94,6 +94,28 @@ export default function AboutPage() {
         </Reveal>
       </section>
 
+      <section className="bg-gradient-to-br from-gold via-clay to-espresso-dark text-cream py-14 sm:py-16 grain">
+        <Reveal
+          childSelector="[data-stat]"
+          stagger={0.08}
+          className="mx-auto max-w-5xl px-5 sm:px-8 grid grid-cols-2 sm:grid-cols-4 gap-8 text-center"
+        >
+          {[
+            { value: "2019", label: "Founded" },
+            { value: "3", label: "Friends who started it" },
+            { value: "6", label: "Years roasting" },
+            { value: "7am", label: "Pastries out daily" },
+          ].map((s) => (
+            <div key={s.label} data-stat>
+              <p className="font-display text-3xl sm:text-4xl mb-1">{s.value}</p>
+              <p className="text-xs sm:text-sm uppercase tracking-widest text-cream/70">
+                {s.label}
+              </p>
+            </div>
+          ))}
+        </Reveal>
+      </section>
+
       <section className="bg-cream-warm py-20 sm:py-28">
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
           <Reveal className="text-center max-w-xl mx-auto mb-14">
