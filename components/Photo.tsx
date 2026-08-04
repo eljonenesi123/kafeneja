@@ -25,7 +25,7 @@ export default function Photo({
   label,
   parallax = false,
   tilt = false,
-  wipe = true,
+  wipe = false,
   src,
   objectPosition = "center",
 }: {

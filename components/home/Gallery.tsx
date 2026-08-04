@@ -19,8 +19,8 @@ const shots: {
     label: "Fresh croissant, straight from the oven",
   },
   {
-    src: "/kafeneja/images/cake.jpg",
-    label: "Basque cheesecake, jammy centre",
+    src: "/kafeneja/images/croissant.jpg",
+    label: "Handing off a fresh croissant",
   },
   {
     src: "/kafeneja/images/interior.jpg",
