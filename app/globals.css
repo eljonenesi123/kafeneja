@@ -47,11 +47,19 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* Grid items default to min-width: auto, which lets long text force the
+   item wider than its track instead of wrapping. Reset it everywhere. */
+.grid > * {
+  min-width: 0;
 }
 
 body {
   background: var(--color-paper);
   color: var(--color-ink);
+  overflow-x: hidden;
   font-family: var(--font-sans), system-ui, sans-serif;
 }
 
