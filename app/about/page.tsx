@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Reveal from "@/components/Reveal";
 import Photo from "@/components/Photo";
+import SplitHeading from "@/components/SplitHeading";
 import CTA from "@/components/home/CTA";
 
 export const metadata: Metadata = {
@@ -50,9 +51,12 @@ export default function AboutPage() {
           <p className="text-xs sm:text-sm tracking-[0.25em] uppercase text-clay mb-4">
             Our Story
           </p>
-          <h1 className="font-display text-4xl sm:text-6xl text-espresso text-balance">
+          <SplitHeading
+            as="h1"
+            className="font-display text-4xl sm:text-6xl text-espresso text-balance"
+          >
             Three friends, one espresso machine, no exit strategy.
-          </h1>
+          </SplitHeading>
         </Reveal>
       </section>
 

@@ -3,8 +3,7 @@ import Reveal from "../Reveal";
 import SectionHeading from "../SectionHeading";
 
 const shots: {
-  variant?: "espresso" | "beans" | "latte" | "interior" | "pastry" | "pour";
-  src?: string;
+  src: string;
   objectPosition?: string;
   label: string;
   span?: string;
@@ -14,14 +13,26 @@ const shots: {
     label: "Moccacino and cappuccino, table service",
     span: "row-span-2",
   },
-  { variant: "beans", label: "Freshly roasted beans" },
-  { variant: "pastry", label: "Pistachio croissant" },
+  {
+    src: "/kafeneja/images/pastry.jpg",
+    objectPosition: "center 65%",
+    label: "Fresh croissant, straight from the oven",
+  },
+  {
+    src: "/kafeneja/images/cake.jpg",
+    label: "Basque cheesecake, jammy centre",
+  },
+  {
+    src: "/kafeneja/images/interior.jpg",
+    objectPosition: "center 35%",
+    label: "Pulling shots behind the bar",
+    span: "row-span-2",
+  },
   {
     src: "/kafeneja/images/espresso-cup.jpg",
     objectPosition: "center 30%",
     label: "Double espresso, house cup",
   },
-  { variant: "pour", label: "V60 pour-over in progress", span: "row-span-2" },
   {
     src: "/kafeneja/images/coffeeholic-sign.jpg",
     label: "Our sign, Rruga Ismail Qemali",
@@ -46,7 +57,6 @@ export default function Gallery() {
           {shots.map((s) => (
             <div key={s.label} data-tile className={s.span}>
               <Photo
-                variant={s.variant}
                 src={s.src}
                 objectPosition={s.objectPosition}
                 ratio="h-full"

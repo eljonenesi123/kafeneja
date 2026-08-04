@@ -63,7 +63,7 @@ export default async function JournalPost({
         className="mx-auto max-w-4xl px-5 sm:px-8 mb-12"
       >
         <Photo
-          variant={post.photo}
+          src={post.photo}
           ratio="aspect-[16/9]"
           className="rounded-2xl"
           label={post.title}
@@ -100,7 +100,7 @@ export default async function JournalPost({
                   className="group block"
                 >
                   <Photo
-                    variant={m.photo}
+                    src={m.photo}
                     ratio="aspect-[4/3]"
                     className="rounded-xl mb-4 transition-transform duration-500 group-hover:scale-[1.02]"
                     label={m.title}

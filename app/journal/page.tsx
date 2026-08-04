@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import Photo from "@/components/Photo";
+import SplitHeading from "@/components/SplitHeading";
 import { posts } from "@/lib/posts";
 
 export const metadata: Metadata = {
@@ -18,9 +19,12 @@ export default function JournalIndex() {
           <p className="text-xs sm:text-sm tracking-[0.25em] uppercase text-clay mb-4">
             Journal
           </p>
-          <h1 className="font-display text-4xl sm:text-6xl text-espresso text-balance">
+          <SplitHeading
+            as="h1"
+            className="font-display text-4xl sm:text-6xl text-espresso text-balance"
+          >
             Notes, events & roasting stories.
-          </h1>
+          </SplitHeading>
         </Reveal>
       </section>
 
@@ -38,7 +42,7 @@ export default function JournalIndex() {
               className="group grid sm:grid-cols-[220px_1fr] gap-6 items-center pb-10 border-b border-line last:border-none"
             >
               <Photo
-                variant={post.photo}
+                src={post.photo}
                 ratio="aspect-[4/3]"
                 className="rounded-xl transition-transform duration-500 group-hover:scale-[1.02]"
                 label={post.title}

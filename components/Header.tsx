@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import MagneticButton from "./MagneticButton";
 
 const NAV = [
   { href: "/menu", label: "Menu" },
@@ -62,12 +63,14 @@ export default function Header() {
               {item.label}
             </Link>
           ))}
-          <Link
-            href="/contact#reserve"
-            className="rounded-full bg-espresso text-cream text-sm px-5 py-2.5 tracking-wide hover:bg-espresso-dark transition-colors duration-200"
-          >
-            Reserve a Table
-          </Link>
+          <MagneticButton strength={0.4}>
+            <Link
+              href="/contact#reserve"
+              className="rounded-full bg-espresso text-cream text-sm px-5 py-2.5 tracking-wide hover:bg-espresso-dark transition-colors duration-200"
+            >
+              Reserve a Table
+            </Link>
+          </MagneticButton>
         </nav>
 
         <button
