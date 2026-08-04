@@ -25,6 +25,7 @@ export default function Photo({
   label,
   parallax = false,
   tilt = false,
+  wipe = true,
   src,
   objectPosition = "center",
 }: {
@@ -34,11 +35,42 @@ export default function Photo({
   label?: string;
   parallax?: boolean;
   tilt?: boolean;
+  wipe?: boolean;
   src?: string;
   objectPosition?: string;
 }) {
   const wrapRef = useRef<HTMLDivElement | null>(null);
   const layerRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (!wipe) return;
+    const wrap = wrapRef.current;
+    if (!wrap) return;
+
+    const reduce = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    if (reduce) return;
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        wrap,
+        { clipPath: "inset(0 0 100% 0)" },
+        {
+          clipPath: "inset(0 0 0% 0)",
+          duration: 1.1,
+          ease: "power4.inOut",
+          scrollTrigger: {
+            trigger: wrap,
+            start: "top 88%",
+            once: true,
+          },
+        }
+      );
+    }, wrap);
+
+    return () => ctx.revert();
+  }, [wipe]);
 
   useEffect(() => {
     if (!parallax) return;

@@ -34,7 +34,7 @@ export default function JournalTeaser() {
               className="group block"
             >
               <Photo
-                variant={post.photo}
+                src={post.photo}
                 ratio="aspect-[4/3]"
                 className="rounded-xl mb-5 transition-transform duration-500 group-hover:scale-[1.02]"
                 label={post.title}

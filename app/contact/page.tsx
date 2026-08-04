@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Reveal from "@/components/Reveal";
+import SplitHeading from "@/components/SplitHeading";
 import ContactForm from "@/components/ContactForm";
 
 export const metadata: Metadata = {
@@ -21,9 +22,12 @@ export default function ContactPage() {
           <p className="text-xs sm:text-sm tracking-[0.25em] uppercase text-clay mb-4">
             Get in Touch
           </p>
-          <h1 className="font-display text-4xl sm:text-6xl text-espresso text-balance">
+          <SplitHeading
+            as="h1"
+            className="font-display text-4xl sm:text-6xl text-espresso text-balance"
+          >
             Come find us in Blloku.
-          </h1>
+          </SplitHeading>
         </Reveal>
       </section>
 

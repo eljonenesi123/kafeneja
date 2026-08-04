@@ -2,8 +2,15 @@
 
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { SplitText } from "gsap/SplitText";
 import Link from "next/link";
 import CountUp from "./CountUp";
+import MagneticButton from "./MagneticButton";
+import SteamWisp from "./SteamWisp";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(SplitText);
+}
 
 export default function Hero() {
   const scope = useRef<HTMLDivElement | null>(null);
@@ -12,6 +19,8 @@ export default function Hero() {
     const reduce = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
+
+    let split: SplitText | undefined;
 
     const ctx = gsap.context(() => {
       if (reduce) {
@@ -22,6 +31,11 @@ export default function Hero() {
         return;
       }
 
+      split = new SplitText("[data-hero-line]", {
+        type: "words",
+        mask: "words",
+      });
+
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
       tl.fromTo(
         "[data-hero-eyebrow]",
@@ -29,9 +43,9 @@ export default function Hero() {
         { opacity: 1, y: 0, duration: 0.6 }
       )
         .fromTo(
-          "[data-hero-line]",
-          { opacity: 0, y: 40 },
-          { opacity: 1, y: 0, duration: 0.9, stagger: 0.12 },
+          split.words,
+          { opacity: 0, yPercent: 120 },
+          { opacity: 1, yPercent: 0, duration: 0.8, stagger: 0.05 },
           "-=0.3"
         )
         .fromTo(
@@ -54,7 +68,10 @@ export default function Hero() {
         );
     }, scope);
 
-    return () => ctx.revert();
+    return () => {
+      ctx.revert();
+      split?.revert();
+    };
   }, []);
 
   return (
@@ -71,10 +88,10 @@ export default function Hero() {
             Blloku, Tirana · Est. 2019
           </p>
           <h1 className="font-display text-[13vw] leading-[0.95] sm:text-6xl md:text-7xl lg:text-6xl xl:text-7xl text-espresso text-balance">
-            <span data-hero-line className="block overflow-hidden">
+            <span data-hero-line className="block">
               Coffee, slowed
             </span>
-            <span data-hero-line className="block overflow-hidden italic text-caramel">
+            <span data-hero-line className="block italic text-caramel">
               down on purpose.
             </span>
           </h1>
@@ -86,13 +103,15 @@ export default function Hero() {
             care, in the heart of Tirana&apos;s Blloku district.
           </p>
           <div className="mt-9 flex flex-wrap items-center gap-4">
-            <Link
-              data-hero-cta
-              href="/menu"
-              className="rounded-full bg-espresso text-cream px-7 py-3.5 text-sm tracking-wide hover:bg-espresso-dark transition-colors duration-200"
-            >
-              View the Menu
-            </Link>
+            <MagneticButton>
+              <Link
+                data-hero-cta
+                href="/menu"
+                className="rounded-full bg-espresso text-cream px-7 py-3.5 text-sm tracking-wide hover:bg-espresso-dark transition-colors duration-200"
+              >
+                View the Menu
+              </Link>
+            </MagneticButton>
             <Link
               data-hero-cta
               href="/contact#reserve"
@@ -104,6 +123,9 @@ export default function Hero() {
         </div>
 
         <div data-hero-photo className="relative">
+          <SteamWisp
+            className="absolute -top-6 left-10 w-8 h-14 text-caramel/60 pointer-events-none hidden sm:block"
+          />
           <div className="hero-media-frame relative aspect-[4/5] w-full">
             <video
               className="h-full w-full object-cover"

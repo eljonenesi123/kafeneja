@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Reveal from "@/components/Reveal";
 import Photo from "@/components/Photo";
+import SplitHeading from "@/components/SplitHeading";
 import { menu } from "@/lib/menu";
 
 export const metadata: Metadata = {
@@ -12,14 +13,30 @@ export const metadata: Metadata = {
 export default function MenuPage() {
   return (
     <div className="bg-paper">
-      <section className="mx-auto max-w-6xl px-5 sm:px-8 pt-16 pb-14 sm:pt-24 sm:pb-20 grid lg:grid-cols-[1.4fr_1fr] gap-10 lg:gap-14 items-center">
-        <Reveal className="text-center lg:text-left">
+      <section className="mx-auto max-w-6xl px-5 sm:px-8 pt-16 pb-14 sm:pt-24 sm:pb-20 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <Reveal className="order-2 lg:order-1">
+          <Photo
+            src="/kafeneja/images/espresso-cup.jpg"
+            objectPosition="center 35%"
+            ratio="aspect-[4/5]"
+            className="rounded-2xl max-w-xs mx-auto lg:mx-0"
+            label="Espresso, house cup and saucer"
+          />
+        </Reveal>
+
+        <Reveal
+          delay={0.1}
+          className="order-1 lg:order-2 text-center lg:text-left"
+        >
           <p className="text-xs sm:text-sm tracking-[0.25em] uppercase text-clay mb-4">
             The Menu
           </p>
-          <h1 className="font-display text-4xl sm:text-6xl text-espresso text-balance">
+          <SplitHeading
+            as="h1"
+            className="font-display text-4xl sm:text-6xl text-espresso text-balance"
+          >
             Simple, seasonal, well made.
-          </h1>
+          </SplitHeading>
           <p className="mt-5 max-w-lg mx-auto lg:mx-0 text-ink-soft leading-relaxed">
             Prices in Albanian Lek (L). Ask your barista about today&apos;s
             single-origin rotation on filter and espresso.
@@ -39,16 +56,6 @@ export default function MenuPage() {
               </a>
             ))}
           </nav>
-        </Reveal>
-
-        <Reveal delay={0.1} className="hidden lg:block max-w-xs ml-auto">
-          <Photo
-            src="/kafeneja/images/espresso-cup.jpg"
-            objectPosition="center 35%"
-            ratio="aspect-[4/5]"
-            className="rounded-2xl"
-            label="Espresso, house cup and saucer"
-          />
         </Reveal>
       </section>
 
