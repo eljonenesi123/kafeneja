@@ -3,7 +3,12 @@ import Reveal from "@/components/Reveal";
 import Photo from "@/components/Photo";
 import SplitHeading from "@/components/SplitHeading";
 import CTA from "@/components/home/CTA";
-import { LeafIcon, FlameIcon, CupIcon } from "@/components/icons/DoodleIcons";
+import {
+  LeafIcon,
+  FlameIcon,
+  CupIcon,
+  StarIcon,
+} from "@/components/icons/DoodleIcons";
 
 export const metadata: Metadata = {
   title: "About",
@@ -33,16 +38,19 @@ const TEAM = [
   {
     name: "Griselda Hoxha",
     role: "Founder & Roaster",
+    detail: "Dials in every new bag before it hits the menu",
     src: "/kafeneja/images/staff-griselda.jpg",
   },
   {
     name: "Ard Berisha",
     role: "Head Barista",
+    detail: "Makes the best cortado in Blloku",
     src: "/kafeneja/images/staff-ard.jpg",
   },
   {
     name: "Redi Krasniqi",
     role: "Bar Lead",
+    detail: "10 years behind the bar, still learning",
     src: "/kafeneja/images/staff-redi.jpg",
   },
 ];
@@ -151,9 +159,9 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-20 sm:py-28">
+      <section className="py-20 sm:py-24">
         <div className="mx-auto max-w-6xl px-5 sm:px-8">
-          <Reveal className="text-center max-w-xl mx-auto mb-14">
+          <Reveal className="text-center max-w-xl mx-auto mb-6">
             <p className="text-xs sm:text-sm tracking-[0.25em] uppercase text-clay mb-3">
               The Team
             </p>
@@ -162,26 +170,55 @@ export default function AboutPage() {
             </h2>
           </Reveal>
 
+          <Reveal delay={0.05} className="max-w-xl mx-auto mb-14 text-center">
+            <p className="text-ink-soft leading-relaxed">
+              Three people, one bar, and a running disagreement about the
+              right water temperature. We hire slowly, train each other
+              constantly, and mean it when we say the person who made your
+              coffee is probably still in the room.
+            </p>
+          </Reveal>
+
           <Reveal
             childSelector="[data-person]"
             stagger={0.1}
-            className="grid sm:grid-cols-3 gap-8"
+            className="grid sm:grid-cols-3 gap-6"
           >
             {TEAM.map((t) => (
-              <div key={t.name} data-person className="text-center">
+              <div
+                key={t.name}
+                data-person
+                className="rounded-2xl bg-cream-warm/40 border border-line p-8 text-center"
+              >
                 <Photo
                   src={t.src}
                   ratio="aspect-square"
-                  className="rounded-full mx-auto mb-5 max-w-[180px]"
+                  className="rounded-full mx-auto mb-5 max-w-[200px] ring-4 ring-clay/25"
                   label={t.name}
                 />
                 <h3 className="font-display text-lg text-espresso">
                   {t.name}
                 </h3>
-                <p className="text-sm text-ink-soft">{t.role}</p>
+                <p className="text-sm text-clay mb-2">{t.role}</p>
+                <p className="text-sm text-ink-soft">{t.detail}</p>
               </div>
             ))}
           </Reveal>
+        </div>
+      </section>
+
+      <section className="bg-cream-warm/60 border-y border-line py-8">
+        <div className="mx-auto max-w-4xl px-5 sm:px-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-4 text-center">
+          <p className="font-display text-lg text-espresso">Est. 2019</p>
+          <span className="hidden sm:block w-1 h-1 rounded-full bg-clay/40" />
+          <p className="font-display text-lg text-espresso">
+            3-person team
+          </p>
+          <span className="hidden sm:block w-1 h-1 rounded-full bg-clay/40" />
+          <p className="font-display text-lg text-espresso flex items-center gap-2">
+            <StarIcon className="w-4 h-4 text-clay" />
+            320+ Google reviews
+          </p>
         </div>
       </section>
 
