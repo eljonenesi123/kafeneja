@@ -28,12 +28,21 @@ export default function MenuPage() {
     <div className="bg-paper">
       <section className="mx-auto max-w-6xl px-5 sm:px-8 pt-16 pb-14 sm:pt-24 sm:pb-20 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         <Reveal className="order-2 lg:order-1">
+          {/*
+            TODO: swap in a real Kafeneja photo here once shot — an
+            editorial top-down flat lay of the espresso bar, or a
+            barista mid-pour, warm/moody lighting to match the Hero.
+            Drop the file in public/images/ and point src at
+            "/kafeneja/images/<file>.jpg" (see espresso-cup.jpg usage
+            elsewhere for the pattern). This Unsplash image is a
+            temporary stand-in only.
+          */}
           <Photo
-            src="/kafeneja/images/espresso-cup.jpg"
+            src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1200&q=80"
             objectPosition="center"
             ratio="aspect-[4/3]"
             className="rounded-2xl max-w-sm mx-auto lg:mx-0"
-            label="Espresso, house cup and saucer"
+            label="Espresso bar setup (placeholder photo)"
           />
         </Reveal>
 
@@ -65,10 +74,16 @@ export default function MenuPage() {
                 <a
                   key={c.id}
                   href={`#${c.id}`}
-                  className="inline-flex items-center gap-2 text-xs sm:text-sm uppercase tracking-widest px-4 py-2 rounded-full border border-line text-ink-soft hover:border-clay hover:text-clay transition-colors"
+                  className="group inline-flex items-center gap-2.5 text-xs sm:text-sm uppercase tracking-widest pl-2 pr-4 py-2 rounded-full bg-paper border border-line hover:border-clay/40 hover:shadow-sm transition-all"
                 >
-                  {Icon && <Icon className="w-4 h-4 shrink-0" />}
-                  {c.title}
+                  {Icon && (
+                    <span className="grid place-items-center w-7 h-7 rounded-full bg-clay/10 text-clay group-hover:bg-clay group-hover:text-cream transition-colors shrink-0">
+                      <Icon className="w-4 h-4" />
+                    </span>
+                  )}
+                  <span className="text-ink-soft group-hover:text-espresso transition-colors">
+                    {c.title}
+                  </span>
                 </a>
               );
             })}
