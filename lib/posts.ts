@@ -30,7 +30,7 @@ export const posts: Post[] = [
       "Free public cuppings return this month. Bring your palate, leave with a new favorite bean.",
     date: "2026-05-14",
     category: "Events",
-    photo: "/kafeneja/images/croissant.jpg",
+    photo: "/kafeneja/images/coffee-on-table.jpg",
     body: [
       "Starting this Sunday, we're reopening our monthly cupping table to the public. No experience necessary, just curiosity and a willingness to slurp loudly.",
       "We'll walk through four coffees side by side: two washed, two natural, sourced from Ethiopia, Colombia, and Kosovo's own emerging specialty scene.",

@@ -3,6 +3,7 @@ import Reveal from "@/components/Reveal";
 import Photo from "@/components/Photo";
 import SplitHeading from "@/components/SplitHeading";
 import CTA from "@/components/home/CTA";
+import { LeafIcon, FlameIcon, CupIcon } from "@/components/icons/DoodleIcons";
 
 export const metadata: Metadata = {
   title: "About",
@@ -14,14 +15,17 @@ const VALUES = [
   {
     title: "Directly Sourced",
     text: "We work with importers who pay above Fairtrade minimums and visit origin whenever we can.",
+    Icon: LeafIcon,
   },
   {
     title: "Roasted in Tirana",
     text: "Small batches, roasted weekly on our drum roaster just outside the city.",
+    Icon: FlameIcon,
   },
   {
     title: "Tradition, Kept",
     text: "Kafe turke is treated with the same care as our espresso, no shortcuts taken.",
+    Icon: CupIcon,
   },
 ];
 
@@ -73,7 +77,7 @@ export default function AboutPage() {
           <p>
             Kafeneja began in 2019 when Griselda, back in Tirana after
             years pulling shots in Bologna, couldn&apos;t find the coffee
-            she missed. So she, her brother Ard, and their friend Elsa
+            she missed. So she, her brother Ard, and their friend Redi
             gutted a ground-floor apartment on Rruga Ismail Qemali and
             built the bar themselves.
           </p>
@@ -112,6 +116,7 @@ export default function AboutPage() {
                 data-value
                 className="rounded-2xl bg-paper border border-line p-7"
               >
+                <v.Icon className="w-9 h-9 text-clay mb-4" />
                 <h3 className="font-display text-xl text-espresso mb-2">
                   {v.title}
                 </h3>

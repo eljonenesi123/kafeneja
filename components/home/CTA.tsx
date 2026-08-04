@@ -9,7 +9,7 @@ export default function CTA() {
     <section className="bg-paper py-20 sm:py-28">
       <div className="mx-auto max-w-5xl px-5 sm:px-8">
         <Reveal
-          className="relative rounded-3xl bg-gradient-to-br from-clay to-espresso text-cream px-8 py-16 sm:py-20 text-center grain overflow-hidden"
+          className="relative rounded-3xl bg-gradient-to-br from-gold via-clay to-espresso-dark text-cream px-8 py-16 sm:py-20 text-center grain overflow-hidden"
         >
           <SteamWisp
             className="absolute top-6 left-1/2 -translate-x-16 w-6 h-12 text-cream/70 pointer-events-none hidden sm:block"

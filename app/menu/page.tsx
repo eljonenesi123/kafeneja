@@ -3,6 +3,19 @@ import Reveal from "@/components/Reveal";
 import Photo from "@/components/Photo";
 import SplitHeading from "@/components/SplitHeading";
 import { menu } from "@/lib/menu";
+import {
+  CupIcon,
+  DropletIcon,
+  FlameIcon,
+  SnowflakeIcon,
+} from "@/components/icons/DoodleIcons";
+
+const CATEGORY_ICONS: Record<string, typeof CupIcon> = {
+  espresso: CupIcon,
+  filter: DropletIcon,
+  pastries: FlameIcon,
+  cold: SnowflakeIcon,
+};
 
 export const metadata: Metadata = {
   title: "Menu",
@@ -46,15 +59,19 @@ export default function MenuPage() {
             aria-label="Menu categories"
             className="mt-8 flex flex-wrap justify-center lg:justify-start gap-3"
           >
-            {menu.map((c) => (
-              <a
-                key={c.id}
-                href={`#${c.id}`}
-                className="text-xs sm:text-sm uppercase tracking-widest px-4 py-2 rounded-full border border-line text-ink-soft hover:border-clay hover:text-clay transition-colors"
-              >
-                {c.title}
-              </a>
-            ))}
+            {menu.map((c) => {
+              const Icon = CATEGORY_ICONS[c.id];
+              return (
+                <a
+                  key={c.id}
+                  href={`#${c.id}`}
+                  className="inline-flex items-center gap-2 text-xs sm:text-sm uppercase tracking-widest px-4 py-2 rounded-full border border-line text-ink-soft hover:border-clay hover:text-clay transition-colors"
+                >
+                  {Icon && <Icon className="w-4 h-4 shrink-0" />}
+                  {c.title}
+                </a>
+              );
+            })}
           </nav>
         </Reveal>
       </section>

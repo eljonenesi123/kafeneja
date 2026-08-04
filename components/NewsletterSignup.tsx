@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Lottie from "lottie-react";
 import astronautCoffee from "@/lib/lottie/astronaut-coffee.json";
+import { BeanIcon } from "./icons/DoodleIcons";
 
 type Status = "idle" | "submitting" | "success";
 
@@ -18,11 +19,13 @@ export default function NewsletterSignup() {
   }
 
   return (
-    <div className="rounded-2xl bg-cream/[0.04] border border-cream/15 p-6 sm:p-7 flex items-center gap-4">
+    <div className="relative overflow-hidden rounded-2xl bg-cream/[0.04] border border-cream/15 p-6 sm:p-7 flex items-center gap-4">
+      <BeanIcon className="hidden lg:block absolute -right-6 top-1/2 -translate-y-1/2 w-40 h-40 text-cream/[0.05] rotate-12 pointer-events-none" />
+      <BeanIcon className="hidden lg:block absolute right-24 -bottom-8 w-24 h-24 text-cream/[0.05] -rotate-12 pointer-events-none" />
       <div className="w-20 h-20 sm:w-24 sm:h-24 shrink-0">
         <Lottie animationData={astronautCoffee} loop />
       </div>
-      <div className="min-w-0">
+      <div className="min-w-0 flex-1 max-w-md">
         <p className="font-display text-lg text-cream mb-1">
           One email a month, no more.
         </p>
