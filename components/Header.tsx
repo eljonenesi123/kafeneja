@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import MagneticButton from "./MagneticButton";
@@ -43,12 +44,15 @@ export default function Header() {
       }`}
     >
       <div className="mx-auto max-w-7xl px-5 sm:px-8 flex items-center justify-between h-18 py-4">
-        <Link
-          href="/"
-          className="font-display text-xl sm:text-2xl tracking-tight text-espresso"
-          aria-label="Kafeneja home"
-        >
-          Kafeneja
+        <Link href="/" className="flex items-center shrink-0" aria-label="Kafeneja home">
+          <Image
+            src="/kafeneja/images/logo.png"
+            alt="Kafeneja"
+            width={1536}
+            height={1024}
+            priority
+            className="h-9 sm:h-11 w-auto"
+          />
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">
