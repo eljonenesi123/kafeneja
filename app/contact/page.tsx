@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Reveal from "@/components/Reveal";
 import SplitHeading from "@/components/SplitHeading";
 import ContactForm from "@/components/ContactForm";
+import ReservationForm from "@/components/ReservationForm";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -28,6 +29,28 @@ export default function ContactPage() {
           >
             Come find us in Blloku.
           </SplitHeading>
+        </Reveal>
+      </section>
+
+      <section
+        id="reserve"
+        className="scroll-mt-24 mx-auto max-w-4xl px-5 sm:px-8 pb-20 sm:pb-24"
+      >
+        <Reveal
+          className="rounded-3xl border-2 border-clay/25 bg-cream-warm/40 p-6 sm:p-10 grain"
+        >
+          <p className="text-xs sm:text-sm tracking-[0.25em] uppercase text-clay mb-3">
+            Book a Table
+          </p>
+          <h2 className="font-display text-2xl sm:text-3xl text-espresso mb-2">
+            Reserve your spot.
+          </h2>
+          <p className="text-ink-soft leading-relaxed mb-8 max-w-lg">
+            Tell us when you&apos;re coming and how many of you there are.
+            We hold tables for groups of 4 or more; for same-day
+            reservations, calling ahead is fastest.
+          </p>
+          <ReservationForm />
         </Reveal>
       </section>
 
@@ -83,24 +106,17 @@ export default function ContactPage() {
               </li>
             </ul>
           </div>
-
-          <div id="reserve" className="scroll-mt-24">
-            <h2 className="text-xs uppercase tracking-widest text-clay mb-3">
-              Reservations
-            </h2>
-            <p className="text-ink-soft leading-relaxed">
-              We hold tables for groups of 4 or more. For same-day
-              reservations, calling ahead is fastest. Otherwise use the
-              form and mention your preferred time.
-            </p>
-          </div>
         </Reveal>
 
         <Reveal delay={0.1} className="lg:col-span-3">
-          <div className="rounded-2xl border border-line p-6 sm:p-8 bg-cream-warm/40">
-            <h2 className="font-display text-2xl text-espresso mb-6">
+          <div className="rounded-2xl border border-line p-6 sm:p-8 bg-paper">
+            <h2 className="font-display text-2xl text-espresso mb-1">
               Send us a message
             </h2>
+            <p className="text-sm text-ink-soft mb-6">
+              For anything that isn&apos;t a reservation, feedback, press,
+              or otherwise.
+            </p>
             <ContactForm />
           </div>
         </Reveal>
