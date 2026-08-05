@@ -7,6 +7,8 @@ import Link from "next/link";
 import CountUp from "./CountUp";
 import MagneticButton from "./MagneticButton";
 import SteamWisp from "./SteamWisp";
+import OrderAhead from "./OrderAhead";
+import { useLanguage } from "@/lib/i18n";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(SplitText);
@@ -14,6 +16,7 @@ if (typeof window !== "undefined") {
 
 export default function Hero() {
   const scope = useRef<HTMLDivElement | null>(null);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const reduce = window.matchMedia(
@@ -85,22 +88,21 @@ export default function Hero() {
             data-hero-eyebrow
             className="text-xs sm:text-sm tracking-[0.25em] uppercase text-clay mb-6"
           >
-            Blloku, Tirana · Est. 2019
+            {t("hero.eyebrow")}
           </p>
           <h1 className="font-display text-[13vw] leading-[0.95] sm:text-6xl md:text-7xl lg:text-6xl xl:text-7xl text-espresso text-balance">
             <span data-hero-line className="block">
-              Coffee, slowed
+              {t("hero.title1")}
             </span>
             <span data-hero-line className="block italic text-caramel">
-              down on purpose.
+              {t("hero.title2")}
             </span>
           </h1>
           <p
             data-hero-sub
             className="mt-6 max-w-md text-base sm:text-lg text-ink-soft leading-relaxed"
           >
-            Single-origin beans, roasted in small batches and pulled with
-            care, in the heart of Tirana&apos;s Blloku district.
+            {t("hero.sub")}
           </p>
           <div className="mt-9 flex flex-wrap items-center gap-4">
             <MagneticButton>
@@ -109,7 +111,7 @@ export default function Hero() {
                 href="/menu"
                 className="rounded-full bg-espresso text-cream px-7 py-3.5 text-sm tracking-wide hover:bg-espresso-dark transition-colors duration-200"
               >
-                View the Menu
+                {t("hero.viewMenu")}
               </Link>
             </MagneticButton>
             <Link
@@ -117,9 +119,10 @@ export default function Hero() {
               href="/contact#reserve"
               className="link-underline text-sm tracking-wide text-espresso"
             >
-              Reserve a table →
+              {t("hero.reserveArrow")}
             </Link>
           </div>
+          <OrderAhead className="mt-6" />
         </div>
 
         <div data-hero-photo className="relative">
@@ -146,7 +149,7 @@ export default function Hero() {
               4.9<span aria-hidden>★</span>
             </p>
             <p className="text-xs text-ink-soft tracking-wide">
-              <CountUp to={320} suffix="+" /> reviews on Google
+              <CountUp to={320} suffix="+" /> {t("hero.reviews")}
             </p>
           </div>
         </div>

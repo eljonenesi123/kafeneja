@@ -1,10 +1,14 @@
+"use client";
+
 import Reveal from "../Reveal";
 import SectionHeading from "../SectionHeading";
 import { StarIcon } from "../icons/DoodleIcons";
+import { useLanguage } from "@/lib/i18n";
 
 const REVIEWS = [
   {
     quote: "Best flat white in Blloku, hands down.",
+    quoteSq: "Flat white më i mirë në Bllok, pa dyshim.",
     name: "Elira K.",
     since: 2021,
     rating: 5,
@@ -12,6 +16,8 @@ const REVIEWS = [
   {
     quote:
       "Kafe turke made properly, the way my gjyshe used to. I come for that alone and stay for the byrek.",
+    quoteSq:
+      "Kafe turke e bërë siç duhet, ashtu si e bënte gjyshja ime. Vij vetëm për këtë dhe qëndroj për byrekun.",
     name: "Andi M.",
     since: 2020,
     rating: 5,
@@ -19,6 +25,8 @@ const REVIEWS = [
   {
     quote:
       "Quiet in the mornings, buzzing by noon. My go-to for working with a laptop and a very good espresso.",
+    quoteSq:
+      "E qetë në mëngjes, e gjallë deri në mesditë. Vendi im për të punuar me laptop dhe një espresso shumë të mirë.",
     name: "Sara T.",
     since: 2023,
     rating: 5,
@@ -26,6 +34,8 @@ const REVIEWS = [
   {
     quote:
       "Supposedly Blloku's best-kept secret, except everyone already knows.",
+    quoteSq:
+      "Gjoja sekreti më i mirëmbajtur i Bllokut, veç se të gjithë e dinë tashmë.",
     name: "Marko D.",
     since: 2022,
     rating: 4,
@@ -33,12 +43,13 @@ const REVIEWS = [
 ];
 
 export default function Testimonials() {
+  const { t, pick } = useLanguage();
   return (
     <section className="bg-cream-warm py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeading
-          eyebrow="Regulars & Reviews"
-          title="What our regulars say."
+          eyebrow={t("testimonials.eyebrow")}
+          title={t("testimonials.title")}
           align="center"
           className="mb-14"
         />
@@ -64,10 +75,10 @@ export default function Testimonials() {
                 ))}
               </div>
               <blockquote className="font-display text-lg leading-snug text-espresso text-balance">
-                “{r.quote}”
+                “{pick(r.quote, r.quoteSq)}”
               </blockquote>
               <figcaption className="mt-5 text-sm text-ink-soft">
-                {r.name}, regular since {r.since}
+                {r.name}, {t("testimonials.since")} {r.since}
               </figcaption>
             </figure>
           ))}

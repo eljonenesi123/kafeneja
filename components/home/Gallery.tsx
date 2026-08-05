@@ -1,6 +1,9 @@
+"use client";
+
 import Photo from "../Photo";
 import Reveal from "../Reveal";
 import SectionHeading from "../SectionHeading";
+import { useLanguage } from "@/lib/i18n";
 
 const shots: {
   src: string;
@@ -40,12 +43,13 @@ const shots: {
 ];
 
 export default function Gallery() {
+  const { t } = useLanguage();
   return (
     <section className="bg-paper py-20 sm:py-28">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeading
-          eyebrow="Around the Shop"
-          title="A few honest snapshots."
+          eyebrow={t("gallery.eyebrow")}
+          title={t("gallery.title")}
           align="center"
           className="mb-12"
         />

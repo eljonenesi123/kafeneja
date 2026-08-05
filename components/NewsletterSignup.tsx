@@ -4,11 +4,13 @@ import { useState } from "react";
 import Lottie from "lottie-react";
 import astronautCoffee from "@/lib/lottie/astronaut-coffee.json";
 import { BeanIcon } from "./icons/DoodleIcons";
+import { useLanguage } from "@/lib/i18n";
 
 type Status = "idle" | "submitting" | "success";
 
 export default function NewsletterSignup() {
   const [status, setStatus] = useState<Status>("idle");
+  const { t } = useLanguage();
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -27,31 +29,30 @@ export default function NewsletterSignup() {
       </div>
       <div className="min-w-0 flex-1 max-w-md">
         <p className="font-display text-lg text-cream mb-1">
-          One email a month, no more.
+          {t("newsletter.title")}
         </p>
         {status === "success" ? (
           <p className="text-sm text-cream/70">
-            You&apos;re on the list. First one lands next roast day.
+            {t("newsletter.success")}
           </p>
         ) : (
           <>
             <p className="text-sm text-cream/60 mb-3">
-              New arrivals and roasting notes from the journal, straight to
-              your inbox.
+              {t("newsletter.sub")}
             </p>
             <form
               onSubmit={handleSubmit}
               className="flex flex-col xs:flex-row gap-2"
             >
               <label htmlFor="newsletter-email" className="sr-only">
-                Email address
+                {t("newsletter.emailLabel")}
               </label>
               <input
                 id="newsletter-email"
                 type="email"
                 name="email"
                 required
-                placeholder="you@email.com"
+                placeholder={t("newsletter.placeholder")}
                 className="min-w-0 flex-1 rounded-full border border-cream/25 bg-transparent px-4 py-2 text-sm text-cream placeholder:text-cream/40 focus:border-cream/60 outline-none transition-colors"
               />
               <button
@@ -59,7 +60,7 @@ export default function NewsletterSignup() {
                 disabled={status === "submitting"}
                 className="rounded-full bg-cream text-espresso text-sm px-5 py-2 tracking-wide hover:bg-cream/90 transition-colors duration-200 disabled:opacity-60 cursor-pointer"
               >
-                {status === "submitting" ? "Joining…" : "Subscribe"}
+                {status === "submitting" ? t("newsletter.joining") : t("newsletter.subscribe")}
               </button>
             </form>
           </>

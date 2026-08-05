@@ -1,10 +1,14 @@
+"use client";
+
 import Link from "next/link";
 import Reveal from "../Reveal";
 import SplitHeading from "../SplitHeading";
 import MagneticButton from "../MagneticButton";
 import SteamWisp from "../SteamWisp";
+import { useLanguage } from "@/lib/i18n";
 
 export default function CTA() {
+  const { t } = useLanguage();
   return (
     <section className="bg-paper py-20 sm:py-28">
       <div className="mx-auto max-w-5xl px-5 sm:px-8">
@@ -18,10 +22,10 @@ export default function CTA() {
             as="h2"
             className="font-display text-3xl sm:text-5xl text-balance max-w-2xl mx-auto"
           >
-            Come sit with us. The coffee's ready.
+            {t("cta.title")}
           </SplitHeading>
           <p className="mt-4 text-cream/75 max-w-md mx-auto">
-            Rruga Ismail Qemali 12, Blloku, Tirana. Open daily from 07:30.
+            {t("cta.sub")}
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <MagneticButton>
@@ -29,7 +33,7 @@ export default function CTA() {
                 href="/contact#reserve"
                 className="rounded-full bg-cream text-espresso px-7 py-3.5 text-sm tracking-wide hover:bg-paper transition-colors duration-200"
               >
-                Reserve a Table
+                {t("cta.reserve")}
               </Link>
             </MagneticButton>
             <MagneticButton>
@@ -37,7 +41,7 @@ export default function CTA() {
                 href="/menu"
                 className="rounded-full border border-cream/40 px-7 py-3.5 text-sm tracking-wide hover:bg-cream/10 transition-colors duration-200"
               >
-                See the Menu
+                {t("cta.seeMenu")}
               </Link>
             </MagneticButton>
           </div>

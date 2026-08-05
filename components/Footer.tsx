@@ -1,8 +1,13 @@
+"use client";
+
 import Link from "next/link";
 import NewsletterSignup from "./NewsletterSignup";
 import { InstagramDoodle, FacebookDoodle } from "./icons/DoodleIcons";
+import { useLanguage } from "@/lib/i18n";
 
 export default function Footer() {
+  const { t } = useLanguage();
+
   return (
     <footer className="bg-espresso text-cream/80 grain">
       <div className="mx-auto max-w-7xl px-5 sm:px-8 pt-16">
@@ -12,8 +17,7 @@ export default function Footer() {
         <div className="md:col-span-2">
           <p className="font-display text-2xl text-cream mb-4">Kafeneja</p>
           <p className="max-w-sm text-sm leading-relaxed text-cream/70">
-            A slow-roasted corner of Blloku, pouring single-origin espresso,
-            house pastries, and honest hospitality since 2019.
+            {t("footer.tagline")}
           </p>
           <div className="flex gap-5 mt-6">
             {[
@@ -33,11 +37,33 @@ export default function Footer() {
               </a>
             ))}
           </div>
+
+          <div className="mt-8">
+            <p className="text-xs uppercase tracking-widest text-cream/50 mb-4">
+              {t("footer.orderAhead")}
+            </p>
+            <div className="flex flex-col xs:flex-row gap-3">
+              {[
+                { name: "Wolt", href: "https://wolt.com/en/alb/tirana" },
+                { name: "Glovo", href: "https://www.glovoapp.com" },
+              ].map((p) => (
+                <a
+                  key={p.name}
+                  href={p.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-full border border-cream/25 px-5 py-2 text-sm text-cream/80 hover:bg-cream hover:text-espresso hover:border-cream transition-colors duration-200"
+                >
+                  {p.name}
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
 
         <div>
           <p className="text-xs uppercase tracking-widest text-cream/50 mb-4">
-            Visit
+            {t("footer.visit")}
           </p>
           <address className="not-italic text-sm leading-relaxed text-cream/70">
             Rruga Ismail Qemali 12
@@ -50,24 +76,26 @@ export default function Footer() {
 
         <div>
           <p className="text-xs uppercase tracking-widest text-cream/50 mb-4">
-            Hours
+            {t("footer.hours")}
           </p>
           <ul className="text-sm leading-relaxed text-cream/70 space-y-1">
-            <li>Mon to Fri, 07:30 to 20:00</li>
-            <li>Sat and Sun, 08:00 to 21:00</li>
+            <li>{t("footer.hours1")}</li>
+            <li>{t("footer.hours2")}</li>
           </ul>
         </div>
       </div>
 
       <div className="border-t border-cream/10">
         <div className="mx-auto max-w-7xl px-5 sm:px-8 py-6 flex flex-col sm:flex-row gap-2 justify-between text-xs text-cream/40">
-          <p>© {new Date().getFullYear()} Kafeneja. All rights reserved.</p>
+          <p>
+            © {new Date().getFullYear()} Kafeneja. {t("footer.rights")}
+          </p>
           <div className="flex gap-6">
             <Link href="/contact" className="link-underline">
-              Contact
+              {t("footer.contact")}
             </Link>
             <Link href="/menu" className="link-underline">
-              Menu
+              {t("footer.menu")}
             </Link>
           </div>
         </div>

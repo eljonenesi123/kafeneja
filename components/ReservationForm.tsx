@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { CalendarIcon, ClockIcon, PeopleIcon } from "./icons/DoodleIcons";
+import { useLanguage } from "@/lib/i18n";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -51,6 +52,7 @@ export default function ReservationForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [date, setDate] = useState("");
+  const { t } = useLanguage();
 
   const slots = useMemo(() => slotsForDate(date), [date]);
   const min = useMemo(() => todayISO(), []);
@@ -63,13 +65,13 @@ export default function ReservationForm() {
     const dateVal = String(data.get("date") || "").trim();
     const timeVal = String(data.get("time") || "").trim();
 
-    if (!name) next.name = "Please tell us your name.";
+    if (!name) next.name = t("form.errorName");
     if (!email && !phone)
-      next.email = "Leave an email or phone so we can confirm.";
+      next.email = t("form.errorEmailOrPhone");
     else if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
-      next.email = "That email doesn't look right.";
-    if (!dateVal) next.date = "Pick a date.";
-    if (!timeVal) next.time = "Pick a time.";
+      next.email = t("form.errorEmailInvalid");
+    if (!dateVal) next.date = t("form.errorDate");
+    if (!timeVal) next.time = t("form.errorTime");
 
     return next;
   }
@@ -100,18 +102,17 @@ export default function ReservationForm() {
         className="rounded-2xl border border-clay/30 bg-clay/5 p-8 text-center"
       >
         <p className="font-display text-2xl text-espresso mb-2">
-          Faleminderit, request sent!
+          {t("form.reservationSuccessTitle")}
         </p>
         <p className="text-ink-soft text-sm">
-          We&apos;ll confirm your reservation by email or phone shortly.
-          Groups of 4 or more may get a quick call to lock in the details.
+          {t("form.reservationSuccessBody")}
         </p>
         <button
           type="button"
           onClick={() => setStatus("idle")}
           className="mt-6 text-sm link-underline text-espresso"
         >
-          Book another table
+          {t("form.bookAnother")}
         </button>
       </div>
     );
@@ -120,9 +121,9 @@ export default function ReservationForm() {
   return (
     <form onSubmit={handleSubmit} noValidate className="space-y-5">
       <div className="grid sm:grid-cols-2 gap-5">
-        <Field label="Name" name="name" autoComplete="name" error={errors.name} />
+        <Field label={t("form.name")} name="name" autoComplete="name" error={errors.name} />
         <Field
-          label="Email"
+          label={t("form.email")}
           name="email"
           type="email"
           autoComplete="email"
@@ -131,7 +132,7 @@ export default function ReservationForm() {
       </div>
 
       <Field
-        label="Phone (optional)"
+        label={t("form.phoneOptional")}
         name="phone"
         type="tel"
         autoComplete="tel"
@@ -139,7 +140,7 @@ export default function ReservationForm() {
       />
 
       <div className="grid sm:grid-cols-3 gap-5">
-        <IconField label="Date" icon={CalendarIcon} error={errors.date}>
+        <IconField label={t("form.date")} htmlFor="field-date" icon={CalendarIcon} error={errors.date}>
           <input
             id="field-date"
             name="date"
@@ -152,7 +153,7 @@ export default function ReservationForm() {
           />
         </IconField>
 
-        <IconField label="Time" icon={ClockIcon} error={errors.time}>
+        <IconField label={t("form.time")} htmlFor="field-time" icon={ClockIcon} error={errors.time}>
           <select
             id="field-time"
             name="time"
@@ -161,7 +162,7 @@ export default function ReservationForm() {
             className="w-full rounded-lg border border-line bg-paper px-4 py-3 text-ink focus:border-clay outline-none transition-colors appearance-none"
           >
             <option value="" disabled>
-              Select a time
+              {t("form.selectTime")}
             </option>
             {slots.map((s) => (
               <option key={s} value={s}>
@@ -171,7 +172,7 @@ export default function ReservationForm() {
           </select>
         </IconField>
 
-        <IconField label="Party size" icon={PeopleIcon}>
+        <IconField label={t("form.partySize")} htmlFor="field-party" icon={PeopleIcon}>
           <select
             id="field-party"
             name="party"
@@ -180,22 +181,20 @@ export default function ReservationForm() {
           >
             {Array.from({ length: 8 }, (_, i) => i + 1).map((n) => (
               <option key={n} value={n}>
-                {n} {n === 1 ? "guest" : "guests"}
+                {n} {n === 1 ? t("form.guest") : t("form.guests")}
               </option>
             ))}
           </select>
         </IconField>
       </div>
-      <p className="text-xs text-ink-soft -mt-2">
-        For groups of 4 or more, we&apos;ll confirm by phone.
-      </p>
+      <p className="text-xs text-ink-soft -mt-2">{t("form.groupNote")}</p>
 
       <Field
-        label="Notes (optional)"
+        label={t("form.notesOptional")}
         name="notes"
         as="textarea"
         rows={3}
-        placeholder="Window seat if possible, celebrating a birthday, allergies…"
+        placeholder={t("form.notesPlaceholder")}
       />
 
       <button
@@ -203,7 +202,7 @@ export default function ReservationForm() {
         disabled={status === "submitting"}
         className="w-full sm:w-auto rounded-full bg-espresso text-cream px-8 py-3.5 text-sm tracking-wide hover:bg-espresso-dark transition-colors duration-200 disabled:opacity-60 cursor-pointer disabled:cursor-not-allowed"
       >
-        {status === "submitting" ? "Sending…" : "Request Reservation"}
+        {status === "submitting" ? t("form.sending") : t("form.requestReservation")}
       </button>
     </form>
   );
@@ -211,11 +210,13 @@ export default function ReservationForm() {
 
 function IconField({
   label,
+  htmlFor,
   icon: Icon,
   error,
   children,
 }: {
   label: string;
+  htmlFor: string;
   icon: (props: { className?: string }) => React.ReactElement;
   error?: string;
   children: React.ReactNode;
@@ -223,7 +224,7 @@ function IconField({
   return (
     <div>
       <label
-        htmlFor={`field-${label.toLowerCase().replace(/\s.*/, "")}`}
+        htmlFor={htmlFor}
         className="flex items-center gap-1.5 text-xs uppercase tracking-widest text-ink-soft mb-2"
       >
         <Icon className="w-4 h-4 text-clay shrink-0" />

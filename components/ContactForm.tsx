@@ -1,12 +1,14 @@
 "use client";
 
 import { useState } from "react";
+import { useLanguage } from "@/lib/i18n";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
 export default function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const { t } = useLanguage();
 
   function validate(data: FormData) {
     const next: Record<string, string> = {};
@@ -14,11 +16,11 @@ export default function ContactForm() {
     const email = String(data.get("email") || "").trim();
     const message = String(data.get("message") || "").trim();
 
-    if (!name) next.name = "Please tell us your name.";
-    if (!email) next.email = "We need an email to reply to you.";
+    if (!name) next.name = t("form.errorName");
+    if (!email) next.email = t("form.errorEmailRequired");
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
-      next.email = "That email doesn't look right.";
-    if (!message) next.message = "Add a short message so we know how to help.";
+      next.email = t("form.errorEmailInvalid");
+    if (!message) next.message = t("form.errorMessage");
 
     return next;
   }
@@ -44,18 +46,17 @@ export default function ContactForm() {
         className="rounded-2xl border border-clay/30 bg-clay/5 p-8 text-center"
       >
         <p className="font-display text-2xl text-espresso mb-2">
-          Faleminderit, message sent!
+          {t("form.contactSuccessTitle")}
         </p>
         <p className="text-ink-soft text-sm">
-          We usually reply within one business day. For same-day questions,
-          call us directly.
+          {t("form.contactSuccessBody")}
         </p>
         <button
           type="button"
           onClick={() => setStatus("idle")}
           className="mt-6 text-sm link-underline text-espresso"
         >
-          Send another message
+          {t("form.sendAnother")}
         </button>
       </div>
     );
@@ -65,13 +66,13 @@ export default function ContactForm() {
     <form onSubmit={handleSubmit} noValidate className="space-y-5">
       <div className="grid sm:grid-cols-2 gap-5">
         <Field
-          label="Name"
+          label={t("form.name")}
           name="name"
           autoComplete="name"
           error={errors.name}
         />
         <Field
-          label="Email"
+          label={t("form.email")}
           name="email"
           type="email"
           autoComplete="email"
@@ -79,12 +80,12 @@ export default function ContactForm() {
         />
       </div>
       <Field
-        label="Subject"
+        label={t("form.subject")}
         name="subject"
-        placeholder="Reservation, feedback, press..."
+        placeholder={t("form.subjectPlaceholder")}
       />
       <Field
-        label="Message"
+        label={t("form.message")}
         name="message"
         as="textarea"
         rows={5}
@@ -96,7 +97,7 @@ export default function ContactForm() {
         disabled={status === "submitting"}
         className="w-full sm:w-auto rounded-full bg-espresso text-cream px-8 py-3.5 text-sm tracking-wide hover:bg-espresso-dark transition-colors duration-200 disabled:opacity-60 cursor-pointer disabled:cursor-not-allowed"
       >
-        {status === "submitting" ? "Sending…" : "Send Message"}
+        {status === "submitting" ? t("form.sending") : t("form.sendMessage")}
       </button>
     </form>
   );
