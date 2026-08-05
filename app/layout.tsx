@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import PageTransition from "@/components/PageTransition";
 import LoadingSplash from "@/components/LoadingSplash";
+import { LanguageProvider } from "@/lib/i18n";
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
@@ -49,18 +50,20 @@ export default function RootLayout({
       className={`${playfair.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-paper text-ink">
-        <a
-          href="#main"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:bg-espresso focus:text-cream focus:px-4 focus:py-2 focus:rounded"
-        >
-          Skip to content
-        </a>
-        <LoadingSplash />
-        <Header />
-        <main id="main" className="flex-1">
-          <PageTransition>{children}</PageTransition>
-        </main>
-        <Footer />
+        <LanguageProvider>
+          <a
+            href="#main"
+            className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 focus:bg-espresso focus:text-cream focus:px-4 focus:py-2 focus:rounded"
+          >
+            Skip to content
+          </a>
+          <LoadingSplash />
+          <Header />
+          <main id="main" className="flex-1">
+            <PageTransition>{children}</PageTransition>
+          </main>
+          <Footer />
+        </LanguageProvider>
       </body>
     </html>
   );

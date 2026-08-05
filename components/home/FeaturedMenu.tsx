@@ -1,9 +1,13 @@
+"use client";
+
 import Link from "next/link";
 import SectionHeading from "../SectionHeading";
 import Reveal from "../Reveal";
 import { menu } from "@/lib/menu";
+import { useLanguage } from "@/lib/i18n";
 
 export default function FeaturedMenu() {
+  const { t, pick } = useLanguage();
   const featured = menu[0].items.slice(0, 5);
 
   return (
@@ -11,15 +15,15 @@ export default function FeaturedMenu() {
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-12">
           <SectionHeading
-            eyebrow="From the Bar"
-            title="A short list, done properly."
+            eyebrow={t("featuredMenu.eyebrow")}
+            title={t("featuredMenu.title")}
           />
           <Reveal delay={0.1}>
             <Link
               href="/menu"
               className="link-underline text-sm tracking-wide text-espresso whitespace-nowrap"
             >
-              Full menu →
+              {t("featuredMenu.fullMenu")}
             </Link>
           </Reveal>
         </div>
@@ -37,11 +41,11 @@ export default function FeaturedMenu() {
             >
               <div className="flex items-baseline gap-3 min-w-0">
                 <h3 className="font-display text-lg sm:text-xl text-espresso truncate">
-                  {item.name}
+                  {pick(item.name, item.nameSq ?? item.name)}
                 </h3>
                 {item.tag && (
                   <span className="shrink-0 text-[10px] uppercase tracking-widest text-cream bg-clay px-2 py-0.5 rounded-full">
-                    {item.tag}
+                    {pick(item.tag, item.tagSq ?? item.tag)}
                   </span>
                 )}
               </div>

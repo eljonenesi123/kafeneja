@@ -4,18 +4,20 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import MagneticButton from "./MagneticButton";
-
-const NAV = [
-  { href: "/menu", label: "Menu" },
-  { href: "/about", label: "About" },
-  { href: "/journal", label: "Journal" },
-  { href: "/contact", label: "Contact" },
-];
+import { useLanguage } from "@/lib/i18n";
 
 export default function Header() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const { lang, setLang, t } = useLanguage();
+
+  const NAV = [
+    { href: "/menu", label: t("nav.menu") },
+    { href: "/about", label: t("nav.about") },
+    { href: "/journal", label: t("nav.journal") },
+    { href: "/contact", label: t("nav.contact") },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -63,39 +65,43 @@ export default function Header() {
               {item.label}
             </Link>
           ))}
+          <LanguageToggle lang={lang} setLang={setLang} />
           <MagneticButton strength={0.4}>
             <Link
               href="/contact#reserve"
               className="rounded-full bg-espresso text-cream text-sm px-5 py-2.5 tracking-wide hover:bg-espresso-dark transition-colors duration-200"
             >
-              Reserve a Table
+              {t("nav.reserve")}
             </Link>
           </MagneticButton>
         </nav>
 
-        <button
-          type="button"
-          className="md:hidden relative w-10 h-10 flex items-center justify-center cursor-pointer"
-          aria-label={open ? "Close menu" : "Open menu"}
-          aria-expanded={open}
-          onClick={() => setOpen((v) => !v)}
-        >
-          <span
-            className={`absolute h-[1.5px] w-6 bg-espresso transition-transform duration-300 ${
-              open ? "rotate-45" : "-translate-y-1.5"
-            }`}
-          />
-          <span
-            className={`absolute h-[1.5px] w-6 bg-espresso transition-opacity duration-200 ${
-              open ? "opacity-0" : "opacity-100"
-            }`}
-          />
-          <span
-            className={`absolute h-[1.5px] w-6 bg-espresso transition-transform duration-300 ${
-              open ? "-rotate-45" : "translate-y-1.5"
-            }`}
-          />
-        </button>
+        <div className="md:hidden flex items-center gap-3">
+          <LanguageToggle lang={lang} setLang={setLang} />
+          <button
+            type="button"
+            className="relative w-10 h-10 flex items-center justify-center cursor-pointer"
+            aria-label={open ? t("nav.closeMenu") : t("nav.openMenu")}
+            aria-expanded={open}
+            onClick={() => setOpen((v) => !v)}
+          >
+            <span
+              className={`absolute h-[1.5px] w-6 bg-espresso transition-transform duration-300 ${
+                open ? "rotate-45" : "-translate-y-1.5"
+              }`}
+            />
+            <span
+              className={`absolute h-[1.5px] w-6 bg-espresso transition-opacity duration-200 ${
+                open ? "opacity-0" : "opacity-100"
+              }`}
+            />
+            <span
+              className={`absolute h-[1.5px] w-6 bg-espresso transition-transform duration-300 ${
+                open ? "-rotate-45" : "translate-y-1.5"
+              }`}
+            />
+          </button>
+        </div>
       </div>
 
       <div
@@ -117,10 +123,50 @@ export default function Header() {
             href="/contact#reserve"
             className="mt-4 rounded-full bg-espresso text-cream text-center text-sm px-5 py-3 tracking-wide"
           >
-            Reserve a Table
+            {t("nav.reserve")}
           </Link>
         </nav>
       </div>
     </header>
+  );
+}
+
+function LanguageToggle({
+  lang,
+  setLang,
+}: {
+  lang: "en" | "sq";
+  setLang: (l: "en" | "sq") => void;
+}) {
+  return (
+    <div
+      className="flex items-center gap-1 text-sm tracking-wide"
+      role="group"
+      aria-label="Language"
+    >
+      <button
+        type="button"
+        onClick={() => setLang("en")}
+        aria-pressed={lang === "en"}
+        className={`px-1 cursor-pointer transition-colors ${
+          lang === "en" ? "text-espresso font-semibold" : "text-ink-soft hover:text-espresso"
+        }`}
+      >
+        EN
+      </button>
+      <span className="text-ink-soft/50" aria-hidden>
+        |
+      </span>
+      <button
+        type="button"
+        onClick={() => setLang("sq")}
+        aria-pressed={lang === "sq"}
+        className={`px-1 cursor-pointer transition-colors ${
+          lang === "sq" ? "text-espresso font-semibold" : "text-ink-soft hover:text-espresso"
+        }`}
+      >
+        AL
+      </button>
+    </div>
   );
 }
