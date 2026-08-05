@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import NewsletterSignup from "./NewsletterSignup";
 import { InstagramDoodle, FacebookDoodle } from "./icons/DoodleIcons";
 import { useLanguage } from "@/lib/i18n";
@@ -15,7 +16,16 @@ export default function Footer() {
       </div>
       <div className="mx-auto max-w-7xl px-5 sm:px-8 py-16 grid gap-12 md:grid-cols-4">
         <div className="md:col-span-2">
-          <p className="font-display text-2xl text-cream mb-4">Kafeneja</p>
+          <div className="flex items-center gap-3 mb-4">
+            <Image
+              src="/kafeneja/images/logo-mark.png"
+              alt=""
+              width={360}
+              height={465}
+              className="h-10 w-auto"
+            />
+            <p className="font-display text-2xl text-cream">Kafeneja</p>
+          </div>
           <p className="max-w-sm text-sm leading-relaxed text-cream/70">
             {t("footer.tagline")}
           </p>

@@ -48,10 +48,10 @@ export default function Header() {
           <Image
             src="/kafeneja/images/logo.png"
             alt="Kafeneja"
-            width={1536}
-            height={1024}
+            width={1201}
+            height={465}
             priority
-            className="h-9 sm:h-11 w-auto"
+            className="h-12 sm:h-16 w-auto"
           />
         </Link>
 
