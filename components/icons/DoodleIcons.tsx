@@ -126,6 +126,68 @@ export function SnowflakeIcon({ className = "" }: IconProps) {
   );
 }
 
+export function CalendarIcon({ className = "" }: IconProps) {
+  return (
+    <svg viewBox="0 0 40 40" fill="none" className={className} aria-hidden="true">
+      <rect
+        x="6"
+        y="9"
+        width="28"
+        height="24"
+        rx="4"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinejoin="round"
+      />
+      <path d="M6 16h28" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+      <path d="M13 6v6M27 6v6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+      <path
+        d="M12 22h4M19 22h4M12 27h4M19 27h4"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+export function ClockIcon({ className = "" }: IconProps) {
+  return (
+    <svg viewBox="0 0 40 40" fill="none" className={className} aria-hidden="true">
+      <circle cx="20" cy="20" r="14" stroke="currentColor" strokeWidth="1.6" />
+      <path
+        d="M20 12v8l6 4"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+export function PeopleIcon({ className = "" }: IconProps) {
+  return (
+    <svg viewBox="0 0 40 40" fill="none" className={className} aria-hidden="true">
+      <circle cx="15" cy="14" r="5" stroke="currentColor" strokeWidth="1.6" />
+      <path
+        d="M6 33c0-6 4-10 9-10s9 4 9 10"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+      />
+      <circle cx="27" cy="16" r="4" stroke="currentColor" strokeWidth="1.4" opacity="0.7" />
+      <path
+        d="M23 33c.5-4.8 3.3-8 7-8.4"
+        stroke="currentColor"
+        strokeWidth="1.4"
+        strokeLinecap="round"
+        opacity="0.7"
+      />
+    </svg>
+  );
+}
+
 export function InstagramDoodle({ className = "" }: IconProps) {
   return (
     <svg viewBox="0 0 40 40" fill="none" className={className} aria-hidden="true">
