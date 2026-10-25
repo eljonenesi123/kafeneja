@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Kafeneja
 
-## Getting Started
+Website for a specialty coffee shop in Tirana: menu, story, team, a journal and table reservations.
 
-First, run the development server:
+**Live:** https://eljonenesi123.github.io/kafeneja/
+
+## Pages
+
+- **Home:** video hero, featured menu, gallery and reviews
+- **Menu:** the full menu
+- **About:** the story and the team
+- **Journal:** short posts from the shop
+- **Contact:** location, hours, contact form and table reservation
+
+## Stack
+
+- Next.js (App Router) with TypeScript
+- Tailwind CSS
+- GSAP for scroll and text animations
+
+The site is exported as static files (`output: "export"` in `next.config.ts`), so it runs on GitHub Pages without a server.
+
+## Running it locally
 
 ```bash
+git clone https://github.com/eljonenesi123/kafeneja.git
+cd kafeneja
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open http://localhost:3000/kafeneja.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deploying
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Pushing to `main` runs the GitHub Actions workflow, which builds the site and publishes the `out/` folder to GitHub Pages.
 
-## Learn More
+If you move it to its own domain, remove `basePath` from `next.config.ts`.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Built by [Script Line Studio](https://scriptlinestudio.com).
