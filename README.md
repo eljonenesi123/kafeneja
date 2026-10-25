@@ -2,7 +2,6 @@
 
 Website for a specialty coffee shop in Tirana: menu, story, team, a journal and table reservations.
 
-**Live:** https://eljonenesi123.github.io/kafeneja/
 
 ## Pages
 
