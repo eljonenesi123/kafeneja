@@ -45,3 +45,8 @@ next-env.d.ts
 
 # raw unprocessed media (compressed versions live in public/videos)
 assets/source/
+
+# Local AI tooling
+CLAUDE.md
+AGENTS.md
+.claude/
